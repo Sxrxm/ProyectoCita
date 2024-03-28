@@ -187,6 +187,21 @@ def update_paciente(id):
     if(request.method == 'GET'):
         return render_template('pacientes/paciente_update.html', paciente_update = paciente_update)
 
+@app.route('/citas/update/<int:id>', methods = ['GET', 'POST'])
+def update_cita(id):
+    cita_update = Cita.query.get(id)
+    if(request.method == 'GET'):
+        return render_template('citas/cita_update.html', cita_update = cita_update)
+    elif(request.method == 'POST'):
+       ## cita_update.fecha = request.form['fecha', current_date.strftime("%Y/%m/%d %H:%M:%S")]
+        cita_update.fecha = datetime.strptime(request.form['fecha'],'%Y-%m-%dT%H:%M')
+        cita_update.pacientes_id = request.form['paciente']
+        cita_update.medicos_id = request.form['medico']
+        cita_update.consultorios_id = request.form['consultorio']
+        db.session.commit()
+        flash("Cita actualizada exitosamente")
+        return redirect('/citas')
+
 ############## Eliminando registro 
 
 @app.route('/medicos/delete/<int:id>')
@@ -196,6 +211,14 @@ def delete_medico(id):
     db.session.commit()
     flash('Eliminado exitosamente', 'delete')
     return redirect('/medicos')
+
+@app.route('/citas/delete/<int:id>')
+def delete_cita(id):
+    cita_delete = Cita.query.get(id)
+    db.session.delete(cita_delete)
+    db.session.commit()
+    flash('Cita eliminada exitosamente', 'delete')
+    return redirect('/citas')
 
 
 

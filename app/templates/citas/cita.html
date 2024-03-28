@@ -11,9 +11,9 @@
     <div>  
         <a  class="btn btn-success" href="http://127.0.0.1:5000/citas">Volver al listado</a>
     </div> 
-    <h3 style="margin-top: 35px;">Informacion del Paciente <span>{{ citaId.id }}</span></h3>
+    <h3 style="margin-top: 35px;">Informacion de la Cita <span>{{ citaId.id }}</span></h3>
     <ul class="">
-      <li><span>Fecha: </span> {{ citaId.fecha}}</li>
+        <li><span>Fecha: </span> {{ citaId.fecha}}</li>
         <li><span>Nombres Paciente:</span> {{citaId.paciente.nombres}}</li>
         <li><span>Nombre Medico:</span> {{citaId.medico.nombres}}</li>
         <li><span>consultorio: </span> {{citaId.consultorio.numero}}</li>

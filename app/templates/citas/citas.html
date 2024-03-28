@@ -77,8 +77,10 @@
                 <td>{{ cita.paciente.nombres }}</td>
                 <td>{{ cita.medico.nombres }}</td>
                 <td>{{ cita.consultorio.numero }}</td>
-                <td><a href="/citas/{{ cita.id }}">Ver Detalle</a></td>
-
+                <td><a href="/citas/{{ cita.id }}">Ver Detalle</a>
+                  <a href="/citas/update/{{ cita.id }}">Actualizar</a>
+                  <a href="/citas/delete/{{ cita.id }}">Eliminar</a>
+                </td>
               </tr>
               {% endfor %}      
             </tbody>
